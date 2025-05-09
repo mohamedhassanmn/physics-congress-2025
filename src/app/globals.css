@@ -1,0 +1,527 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Removed @theme rule and applied variables directly */
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0px;
+  background: #002b41;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #2f1a1a;
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  color: #1E64C8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1E64C8;
+  text-decoration: underline;
+}
+
+.copyright {
+  border: 0px;
+  height: 1px;
+  width: 1px;
+}
+
+#tot-wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#main-wrapper {
+  width: 926px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.left_side_bar {
+  width: 210px;
+  float: left;
+  position: fixed;
+  top: 10px;
+  left: 50px;
+}
+
+#banner {
+  width: 926px;
+  float: left;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/images/ghent_banner4.jpg') top no-repeat;
+  height: 427px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 50px;
+  color: #ffffff;
+  text-shadow: 4px 4px #000000;
+  padding: 0px 0px 0px 0px;
+}
+
+#banner-text {
+  padding: 10px 0px 0px 20px;
+}
+
+#nav {
+  width: 100%;
+  float: left;
+  padding: 10px 15px 0px;
+  height: 39px;
+  background: url(/images/nav-bg.jpg) top repeat-x;
+}
+
+#nav ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  float: left;
+  display: inline;
+}
+
+#nav ul li {
+  float: left;
+  padding: 0px 5px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #FFF;
+  line-height: 18px;
+  border-right: 1px solid #081e2c;
+}
+
+#nav ul li a {
+  float: left;
+  padding: 0px 22px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #FFF;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+#nav ul li a:hover {
+  float: left;
+  padding: 0px 22px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #0aa8f9;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+#nav ul li a.active {
+  float: left;
+  padding: 0px 22px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #0aa8f9;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+#mid-wrapper {
+  width: 926px;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.mid-wrapper-top {
+  width: 926px;
+  float: left;
+  background: url(/images/mid-repet.jpg) repeat-y;
+  overflow: hidden;
+}
+
+.mid-wrapper-top-white {
+  /* width: 906px; */
+  float: left;
+  background: white;
+  padding: 10px 0px 0px 20px;
+}
+
+.mid-leftouter {
+  width: 618px;
+  float: left;
+}
+
+.mid-wrapper-bttm {
+  width: 926px;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.mid-wrapper-bttm-white {
+  float: left;
+  background: white;
+  padding: 10px 0px 0px 20px;
+}
+
+.mid-left-container {
+  width: 618px;
+  float: left;
+  padding: 10px 0px 0px 20px;
+}
+
+.mid-container {
+  width: 926px;
+  float: left;
+  padding: 10px 0px 0px 20px;
+}
+
+.column2 {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.column3 {
+  box-sizing: border-box;
+  float: left;
+  width: 33%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* For simple tables */
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+/* Make the first column bold. */
+td:nth-child(1) {
+  font-weight: bold;
+}
+
+/* For fancy tables */
+#ftable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ftable td,
+#ftable th {
+  border: 0px solid #ddd;
+  padding: 8px;
+}
+
+#ftable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#ftable tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* For float left and right wrapping */
+.fleft {
+  float: left;
+  padding: 100px 0 0 0;
+}
+
+.fright {
+  float: right;
+  padding: 0px 10px;
+}
+
+.frright {
+  float: right;
+  padding: 0px 0px;
+}
+
+
+/* Row of images */
+.image-row {
+  display: flex;
+  justify-content: space-between;
+  /* this will add equal space between each image */
+}
+
+
+/* Animated button */
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #002b41;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* End animated button */
+
+h1 {
+  background: url(/images/divider-1.jpg) bottom no-repeat;
+  display: block;
+  width: 603px;
+  margin: 0px 0px 10px 0px;
+  padding: 0px 0px 10px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  color: #2f1a1a;
+  font-weight: normal;
+}
+
+.yellow-heading {
+  color: #c79214;
+  font-size: 18px;
+}
+
+.left-bullet {
+  padding: 10px 0px 10px 14px;
+  margin: 0px;
+  background: url(/images/bullet1.jpg) left top no-repeat;
+  float: left;
+  display: block;
+  background-position: 0px 13px;
+  width: 550px;
+}
+
+.inner-left {
+  width: 308px;
+  float: left;
+}
+
+.inner-right {
+  width: 300px;
+  float: right;
+}
+
+h2 {
+  background: url(/images/divider-2.jpg) bottom no-repeat;
+  display: block;
+  width: 280px;
+  margin: 0px 0px 10px 0px;
+  padding: 0px 0px 8px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #2f1a1a;
+  font-weight: normal;
+}
+
+.read-more {
+  float: right;
+  color: #333333;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  float: right;
+  color: #333333;
+  text-decoration: none;
+}
+
+.right-container {
+  width: 275px;
+  float: right;
+}
+
+.right-container-top {
+  background: #ced6da url(/images/right-grey.jpg) bottom no-repeat;
+  float: left;
+  padding: 10px 15px;
+  color: #2f1a1a;
+}
+
+h3 {
+  background: url(/images/divider-4.jpg) bottom no-repeat;
+  display: block;
+  width: 224px;
+  margin: 0px 0px 10px 0px;
+  padding: 0px 0px 8px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #2f1a1a;
+  font-weight: normal;
+}
+
+.right-container-top ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  display: block;
+  float: left;
+}
+
+.right-container-top ul li {
+  float: left;
+  background: url(/images/bullet-2.jpg) left top no-repeat;
+  color: #866008;
+  width: 240px;
+  padding: 5px 0px 5px 15px;
+  margin: 6px 0px 0px 0px;
+  background-position: 0px 9px;
+}
+
+.right-container-top ul li a {
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #2f1a1a;
+  text-decoration: none;
+}
+
+.right-container-top ul li a:hover {
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #2f1a1a;
+  text-decoration: underline;
+}
+
+.right-container-dwn {
+  width: 245px;
+  float: left;
+  padding: 10px 15px;
+  color: white;
+}
+
+h4 {
+  background: url(/images/divider-3.jpg) bottom no-repeat;
+  display: block;
+  width: 224px;
+  margin: 0px 0px 10px 0px;
+  padding: 0px 0px 8px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #fff;
+  font-weight: normal;
+}
+
+.read-more-right {
+  float: right;
+  color: #fff;
+  text-decoration: none;
+}
+
+.read-more-right:hover {
+  float: right;
+  color: #fff;
+  text-decoration: none;
+}
+
+ol,ul {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
+.footer {
+  width: 926px;
+  float: left;
+  margin: 10px 0px 0px 0px;
+  color: #fff;
+}
+
+.footer-side {
+  width: 500px;
+  float: left;
+  padding-left: 10px;
+}
+
+.footer-right {
+  width: 300px;
+  float: right;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.footer a {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 0px 4px;
+}
+
+.footer a:hover {
+  color: #0aacff;
+  text-decoration: none;
+}
+
+.footer img {
+  height: auto;
+  max-height: 100px;
+  /* Ensures images inside the footer do not exceed 100px in height */
+}
