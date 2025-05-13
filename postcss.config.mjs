@@ -1,9 +1,8 @@
-import advancedVariables from 'postcss-advanced-variables';
-
 const config = {
   plugins: [
-    "@tailwindcss/postcss",
-    advancedVariables
+    '@tailwindcss/postcss',
+    'autoprefixer',
+    'postcss-advanced-variables'
   ],
 };
 
