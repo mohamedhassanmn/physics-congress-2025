@@ -1,4 +1,43 @@
-const Home = () => {
+import { type SanityDocument } from "next-sanity";
+import { PortableText } from '@portabletext/react';
+
+import { client } from "@/sanity/client";
+
+const POSTS_QUERY = `{
+  "welcomeSections": *[_type == "welcomeSection"]{
+    welcomeTitle,
+    welcomeContent,
+    organizers[]->|order(rank asc){
+      name,
+      role,
+      designationOrganization,
+      rank
+    }
+  },
+  "sponsorSections": *[_type == "sponsorSection"]{
+    sponsorTitle,
+    sponsorContent,
+    sponsors[]->|order(rank asc){
+      sponsorName,
+      sponsorContent,
+      image{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      rank
+    }
+  }
+}`;
+
+const options = { next: { revalidate: 30 } };
+
+const Home = async () => {
+    const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+    const welcomeSection = posts?.welcomeSections[0];
+    const sponsorSection = posts?.sponsorSections[0];
     return (
         <div id="mid-wrapper">
             <div className="mid-wrapper-top">
@@ -8,28 +47,21 @@ const Home = () => {
 					<br/>
 					<br/>-->					 */}
                         <br />
-                        <h1>Welcome</h1>
-                        <p>Dear Colleagues,</p>
-                        <br />
-                        <p>On behalf of the Local Organizing Committee, the Program Committee, and the International Advisory Committee, we sincerely invite you to the 21<sup>st</sup> International Congress on Plasma Physics (ICPP 2024), in Ghent, Belgium, from September 8 to 13, 2024. The event is organized by the department of Applied Physics at the faculty of Engineering and Architecture at Ghent University (UGent).</p>
-                        <br />
-                        <p>The conference will address a wide range of topics in the field of plasma physics. Recent progress will be discussed concerning the following topics:</p>
-                        <ul>
-                            <li>Fundamental plasma physics</li>
-                            <li>Fusion plasmas</li>
-                            <li>Laser-plasma interaction</li>
-                            <li>Plasma accelerators</li>
-                            <li>Astrophysical and space plasmas</li>
-                            <li>Applications of plasmas and plasma technology</li>
-                            <li>Complex plasmas</li>
-                            <li>High energy density plasmas</li>
-                            <li>Quantum plasmas</li>
-                        </ul>
-                        <p>Ghent is a vibrant city with an extensive historical center and an abundant architectural and cultural patrimony. It is located at the confluence of two rivers in the northern part of Belgium. Ghent University is one of the largest universities in the country and is spread over several sites and campuses in and around the city.</p>
-                        <br />
-                        <p>We hope to welcome you in Ghent in September 2024, to enjoy with us the conference, the many sights and the rich culinary tradition of the region!</p>
+                        <h1>{welcomeSection?.welcomeTitle}</h1>
+                        <div>
+                            <PortableText value={welcomeSection?.welcomeContent} />
+                        </div>
                         <div className="row">
-                            <div className="column2">
+                            {
+                                welcomeSection?.organizers?.map((item, index: number) => (
+                                    <div className="column2" key={index}>
+                                        <b>{item.name}</b><br />
+                                        {item.role}<br />
+                                        {item.designationOrganization}
+                                    </div>
+                                ))
+                            }
+                            {/* <div className="column2">
                                 <b>Geert Verdoolaege</b><br />
                                 Chair of LOC<br />
                                 Professor, Ghent University
@@ -38,10 +70,10 @@ const Home = () => {
                                 <b>Bob Bingham</b><br />
                                 Chair of PC<br />
                                 Professor, Science and Technology Facilities Council (STFC)
-                            </div>
+                            </div> */}
                         </div>
                     </div>
-                    <div className="mid-left-container" style={{marginTop: '10px'}}>
+                    <div className="mid-left-container" style={{ marginTop: '10px' }}>
                         <div className="inner-left">
                         </div>
                         <div className="inner-right">
@@ -74,13 +106,21 @@ const Home = () => {
             </div>
             <div id="mid-wrapper-bttm">
                 <div className="mid-wrapper-bttm-white">
-                    <h1>Sponsoring</h1>
+                    <h1>{sponsorSection?.sponsorTitle}</h1>
                     <br />
-                    <p>ICPP 2024 gratefully acknowledges its sponsors.</p>
+                    <div>
+                        <PortableText value={sponsorSection?.sponsorContent} />
+                    </div>
                     <br />
                     <table>
                         <tbody>
-                            <tr>
+                            {sponsorSection?.sponsors?.map((sponsor, index) => (
+                                <tr key={index}>
+                                    <td width="300"><img src={sponsor.image.asset.url} height="150" alt={`${sponsor.sponsorName} logo`} /></td>
+                                    <td width="550"><PortableText value={sponsor?.sponsorContent} /></td>
+                                </tr>
+                            ))}
+                            {/* <tr>
                                 <td width="300"><img src="images/iupap.jpg" height="150" alt="IUPAP logo" /></td>
                                 <td width="550">The <a href="https://iupap.org/" target="_blank">International Union of Pure and Applied Physics</a> (IUPAP) is the only international physics organization that is organized and run by the physics community itself. Its members are identified physics communities in countries or regions around the world. <br />
                                     To secure IUPAP sponsorship, the organisers have provided assurance that ICPP 2024 will be conducted in accordance with IUPAP principles as stated in the IUPAP resolution passed by the General Assembly in 2008 and 2011. In particular, no bona fide scientist will be excluded from participation on the grounds of national origin, nationality, or political considerations unrelated to science.</td>
@@ -88,7 +128,7 @@ const Home = () => {
                             <tr>
                                 <td width="300"><img src="/images/fwo.png" height="110" alt="FWO logo" /></td>
                                 <td width="550">The <a href="https://www.fwo.be/en/" target="_blank">Research Foundation Flanders</a> (FWO) offers researchers in Flanders the opportunity to create knowledge. The FWO provides financial support for individual researchers, programmes and projects, and research infrastructure.</td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                     <br />
