@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { client } from "@/sanity/client";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -34,14 +36,12 @@ const LAYOUT_QUERY = `{
   }
 }`;
 
-const options = { next: { revalidate: 3600 } }; // revalidate every hour
-
 export default async function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
-  const data = await client.fetch(LAYOUT_QUERY, {}, options);
+  const data = await client.fetch(LAYOUT_QUERY);
 
   const layoutSection = data?.layoutSections[0];
   const heroImageUrl = layoutSection?.heroImage?.asset?.url;

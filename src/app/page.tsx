@@ -53,10 +53,8 @@ const ROOT_QUERY = `{
   }
 }`;
 
-const options = { next: { revalidate: 30 } };
-
 const Home = async () => {
-    const data = await client.fetch(ROOT_QUERY, {}, options);
+    const data = await client.fetch(ROOT_QUERY);
     const welcomeSection = data?.welcomeSections?.[0];
     const sponsorSection = data?.sponsorSections?.[0];
     const conferenceSection = data?.conferenceSections?.[0];
