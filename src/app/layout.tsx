@@ -6,7 +6,7 @@ import { PortableText } from "next-sanity";
 
 const portableTextComponents = {
   marks: {
-    sup: ({children}) => <sup>{children}</sup>,
+    sup: ({children}: {children: React.ReactNode}) => <sup>{children}</sup>,
   },
 };
 
@@ -82,7 +82,7 @@ export default async function RootLayout({
 
           <div className="footer">
             <div className="image-row">
-              {layoutSection?.footerImages?.map((img, idx) => (
+              {layoutSection?.footerImages?.map((img: any, idx: number) => (
                 <img
                   key={img.asset._id || idx}
                   src={img.asset.url}
