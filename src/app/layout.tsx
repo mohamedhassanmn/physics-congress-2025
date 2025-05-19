@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 import { client } from "@/sanity/client";
 import { Inter } from "next/font/google";
