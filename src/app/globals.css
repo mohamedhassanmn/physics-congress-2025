@@ -456,6 +456,11 @@ h3 {
   color: white;
 }
 
+.right-container-dwn a{
+  color: #fff;
+  text-decoration: underline;
+}
+
 h4 {
   background: url(/images/divider-3.jpg) bottom no-repeat;
   display: block;
