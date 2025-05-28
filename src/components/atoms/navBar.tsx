@@ -5,7 +5,10 @@ import { usePathname } from "next/navigation";
 const NavBar = () => {  
     const pathname= usePathname();
     return(
-        <div id="nav">
+        <div
+            id="nav"
+            style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.5), var(--color-primary-150))" }}
+        >
               <ul>
                 <li>
                   <a href="/" className={pathname === "/" ? "active" : ""}>

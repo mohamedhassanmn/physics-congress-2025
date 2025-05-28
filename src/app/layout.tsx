@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/atoms/navBar";
 import { PortableText } from "next-sanity";
+import { generateColorShades } from "@/theme/utils";
 
 const portableTextComponents = {
   marks: {
@@ -45,6 +46,10 @@ export default async function RootLayout({
 
   const layoutSection = data?.layoutSections[0];
   const heroImageUrl = layoutSection?.heroImage?.asset?.url;
+  const baseColor = layoutSection?.themeColor || "rgb(0, 43, 65)";
+  const themeVars = generateColorShades(baseColor);
+  // Generate CSS variable string for SSR (ensure variables are prefixed with --)
+  const cssVars = `:root { ${Object.entries(themeVars).map(([k, v]) => `${k}: ${v};`).join(' ')} }`;
   return (
     <html lang="en">
       <head>
@@ -58,8 +63,10 @@ export default async function RootLayout({
         <meta httpEquiv="expires" content="-1" />
         <meta httpEquiv="expires" content="Tue, 01 Jan 1980 11:00:00 GMT" />
         <meta httpEquiv="pragma" content="no-cache" />
+        <style>{cssVars}</style>
       </head>
-      <body className={inter.className} style={{ background: layoutSection?.themeColor || undefined }}>
+      <body className={inter.className} style={{ backgroundColor: "var(--color-primary-500)" }}>
+        {/* Set theme colors on client */}
         <div id="main-wrapper">
           <div id="top-wrapper">
             <div

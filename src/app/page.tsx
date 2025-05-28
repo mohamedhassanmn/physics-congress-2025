@@ -1,4 +1,3 @@
-import { type SanityDocument } from "next-sanity";
 import { PortableText } from '@portabletext/react';
 
 import { client } from "@/sanity/client";
@@ -63,7 +62,7 @@ const Home = async () => {
     const promotionSection = data?.promotionSections?.[0];
     return (
         <div id="mid-wrapper">
-            <div className="mid-wrapper-top">
+            <div className="mid-wrapper-top bg-white">
                 <div className="mid-leftouter">
                     <div className="mid-left-container">
                         <br />
@@ -90,7 +89,7 @@ const Home = async () => {
                         </div>
                     </div>
                 </div>
-                <div className="right-container">
+                <div className="right-container" style={{backgroundColor: 'var(--color-primary-150)'}}>
                     <div className="right-container-top">
                         <h3>{importantDateSection?.importantDateTitle}</h3>
                         <ul>
@@ -108,6 +107,7 @@ const Home = async () => {
                         <br />
                         <h4>{promotionSection?.promotionTitle}</h4>
                         <p><PortableText value={promotionSection?.promotionContent} /></p>
+                        <br/><br/><br/><br/>
                     </div>
                 </div>
             </div>
