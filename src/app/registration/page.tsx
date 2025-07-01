@@ -1,21 +1,68 @@
-const RegistrationPage = () => {
+import { PortableText } from '@portabletext/react';
+
+import { client } from "@/sanity/client";
+
+const REGISTRATION_QUERY = `{
+  "registrationSections": *[_type == "registrationSection"]{
+    registrationContent
+  },
+  "registrationForms": *[_type == "registrationFormType"]{
+    name,
+    registerationFormDetails,
+    clickableCTA[]->{
+      buttonText,
+      buttonLink
+    }
+  },
+  "registrationFees": *[_type == "registrationFeeType"]{
+    registrationFeeStructure[]{
+      earlyParticipants,
+      earlyStudents,
+      earlyAccompanyingPerson,
+      lateParticipants,
+      lateStudents,
+      lateAccompanyingPerson
+    },
+    earlyRegistrationDate,
+    lateRegistrationDate,
+    registrationFeesTitle,
+    registrationNote
+  },
+  "cancellationAndRefundPolicies": *[_type == "cancellationAndRefundPolicy"]{
+    cancellationTitle,
+    cancellationContent
+  },
+  "visaInformation": *[_type == "visaInformation"]{
+    visaTitle,
+    visaInfoContent
+  }
+}`;
+
+const RegistrationPage = async () => {
+    const data = await client.fetch(REGISTRATION_QUERY);
+    const registrationSection = data?.registrationSections?.[0];
+    const registrationForms = data?.registrationForms?.[0] || {};
+    const registrationFees = data?.registrationFees?.[0];
+    const cancellationAndRefundPolicies = data?.cancellationAndRefundPolicies?.[0];
+    const visaInformation = data?.visaInformation?.[0]; 
     return(
         <div id="mid-wrapper">        
         <div className="mid-wrapper-top-white">
             <br />            
-            <p>All presenters, including plenary and invited talks, contributed talks and posters, must register by August 25 at the latest (early registration closes <s>June 30</s> July 15) in order to be included in the final program.</p>
+            {/* <p>All presenters, including plenary and invited talks, contributed talks and posters, must register by August 25 at the latest (early registration closes <s>June 30</s> July 15) in order to be included in the final program.</p>
             <br />
             <p>We use the Easychair platform for online registration. <strong>You will need an Easychair account.</strong></p>
+            <br /> */}
+            <PortableText value={registrationSection?.registrationContent} />
             <br />
+            <h1>{registrationForms?.name}</h1>
+            <PortableText value={registrationForms?.registerationFormDetails} />
             <br />
-            <h1>Registration form</h1>
-            <p>Registration is currently open. Please click the button below to access the registration form.</p>
-            <br />    
-            <a href="https://easychair.org/conferences/?conf=icpp2024" target="_blank"><button className="button" style={{ verticalAlign: "middle" }}><span>Register here</span></button></a>
+            <a href={registrationForms?.clickableCTA[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle" }}><span>{registrationForms?.clickableCTA[0]?.buttonText}</span></button></a>
             <br />
             <br />        
-            <br />    
-            <h1>Registration fees</h1>                                    
+            <br />
+            <h1>Registration fees</h1>
             <table>
                 <thead>
                     <tr>
