@@ -1,6 +1,7 @@
 import { PortableText } from '@portabletext/react';
 
 import { client } from "@/sanity/client";
+import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
 
 const REGISTRATION_QUERY = `{
   "registrationSections": *[_type == "registrationSection"]{
@@ -49,10 +50,6 @@ const RegistrationPage = async () => {
         <div id="mid-wrapper">        
         <div className="mid-wrapper-top-white">
             <br />            
-            {/* <p>All presenters, including plenary and invited talks, contributed talks and posters, must register by August 25 at the latest (early registration closes <s>June 30</s> July 15) in order to be included in the final program.</p>
-            <br />
-            <p>We use the Easychair platform for online registration. <strong>You will need an Easychair account.</strong></p>
-            <br /> */}
             <PortableText value={registrationSection?.registrationContent} />
             <br />
             <h1>{registrationForms?.name}</h1>
@@ -62,7 +59,7 @@ const RegistrationPage = async () => {
             <br />
             <br />        
             <br />
-            <h1>Registration fees</h1>
+            <h1>{registrationFees?.registrationFeesTitle}</h1>
             <table>
                 <thead>
                     <tr>
@@ -74,59 +71,28 @@ const RegistrationPage = async () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td width="150">Early (until <s>June 30</s> July 15)</td>
-                        <td width="100">EUR 600</td>
-                        <td width="100">EUR 300</td>
-                        <td width="120">EUR 130</td>                    
+                        <td width="150"><PortableText value={registrationFees?.earlyRegistrationDate} /></td>
+                        <td width="100">{registrationFees?.registrationFeeStructure?.[0]?.earlyParticipants}</td>
+                        <td width="100">{registrationFees?.registrationFeeStructure?.[0]?.earlyStudents}</td>
+                        <td width="120">{registrationFees?.registrationFeeStructure?.[0]?.earlyAccompanyingPerson}</td>                    
                     </tr>
                     <tr>
-                        <td>Late  (until August 25)</td>
-                        <td>EUR 700</td>
-                        <td>EUR 400</td>
-                        <td>EUR 150</td>                    
+                        <td><PortableText value={registrationFees?.lateRegistrationDate} /></td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.lateParticipants}</td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.lateStudents}</td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.lateAccompanyingPerson}</td>                    
                     </tr>
                 </tbody>
             </table> 
             <br />
-            <p><sup>*</sup>Please note that only persons enrolled as a full-time student (e.g. PhD student) qualify for the student fee. A proof of enrolment may be requested to verify your status as a student.</p>
+            <PortableText value={registrationFees?.registrationNote} components={portableTextComponents} />
             <br />
-            <p><strong>The registration fee includes the following:</strong></p>
-            <ul>
-                <li>Conference with welcome package</li>                            
-                <li>Welcome reception</li>                
-                <li>Excursion</li>
-                <li>Banquet</li>
-                <li>Lunches</li>
-                <li>Coffee breaks</li>
-            </ul>            
-            <p><strong>The fee for accompanying persons includes the following:</strong></p>
-            <ul>
-                <li>Welcome reception</li>                    
-                <li>Excursion</li>
-                <li>Banquet</li>
-                <li>Lunches</li>    
-                <li>Coffee breaks</li>
-            </ul>                
-            <br />
-            <br />
-            <h1>Cancellation and refund policy</h1>        
-            <p>Refund requests following cancellation of paid registrations should be addressed to the conference secretariat at <a href="mailto:icpp2024@ugent.be?subject=Invitation letter">icpp2024@ugent.be</a>. The refund policy is as follows:</p><br />                                    
-            <table>                
-                <tbody>
-                    <tr>
-                        <td width="150">Until July 31, 2024:</td>
-                        <td width="100">Full refund</td>                
-                    </tr>
-                    <tr>
-                        <td>From August 1, 2024:</td>
-                        <td>No refund</td>                
-                    </tr>
-                </tbody>
-            </table> 
+            <h1>{cancellationAndRefundPolicies?.cancellationTitle}</h1>  
+            <PortableText value={cancellationAndRefundPolicies?.cancellationContent}  components={portableTextComponents}/>                               
             <br />
             <br />            
-            <h1>Visa information</h1>        
-            <p>Please see <a href="venue_travel.html#visa_information">here</a> for visa information.</p>                        
+            <h1>{visaInformation?.visaTitle}</h1>
+            <PortableText value={visaInformation?.visaInfoContent}  components={portableTextComponents}/>
             <br />
         </div>
     </div>

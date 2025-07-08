@@ -68,6 +68,10 @@ a:hover {
   padding: 0;
 }
 
+#top-wrapper {
+  overflow: hidden;
+}
+
 .left_side_bar {
   width: 210px;
   float: left;

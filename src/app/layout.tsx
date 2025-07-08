@@ -5,13 +5,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/atoms/navBar";
 import { PortableText } from "next-sanity";
-import { generateColorShades } from "@/theme/utils";
-
-const portableTextComponents = {
-  marks: {
-    sup: ({children}: {children: React.ReactNode}) => <sup>{children}</sup>,
-  },
-};
+import { generateColorShades} from "@/theme/utils";
+import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
 
 const inter = Inter({ subsets: ["latin"] });
 
