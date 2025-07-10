@@ -1,10 +1,10 @@
 export const dynamic = "force-dynamic";
 
-import { client } from "@/sanity/client";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import NavBar from "@/components/atoms/navBar";
 import { PortableText } from "next-sanity";
+import "./globals.css";
+import { client } from "@/sanity/client";
+import NavBar from "@/components/atoms/navBar";
 import { generateColorShades} from "@/theme/utils";
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
 

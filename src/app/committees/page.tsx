@@ -20,7 +20,13 @@ const COMMITTEES_QUERY = `*[_type == "committeesSection"]{
     country
   },
   localOrganizingCommitteeTitle,
-  localOrganizingCommitteeContent
+  localOrganizingCommitteeContent,
+  localOrganizingCommittee[]->{
+    _id,
+    name,
+    organization,
+    country
+  }
 }`;
 
 const CommitteesPage = async () => {
@@ -31,6 +37,7 @@ const CommitteesPage = async () => {
     const advisoryCommitteesSpeakers = data?.[0]?.advisoryCommitteesSpeakers || [];
     const localOrganizingCommitteeTitle = data?.[0]?.localOrganizingCommitteeTitle || "Local Organizing Committee";
     const localOrganizingCommitteeContent = data?.[0]?.localOrganizingCommitteeContent || ""
+    const localOrganizingCommittee = data?.[0]?.localOrganizingCommittee || [];
     return(
         <div id="mid-wrapper">        
         <div className="mid-wrapper-top-white">
@@ -67,6 +74,18 @@ const CommitteesPage = async () => {
             <div className='pr-4'>
                 <PortableText value={localOrganizingCommitteeContent} components={portableTextComponents} />
             </div>
+            <br />
+            <table id="ftable">        
+                <tbody>
+                    {localOrganizingCommittee.map((speaker: any, index: number) => (
+                        <tr key={index}>
+                            <td>{speaker.name}</td>
+                            <td>{speaker.organization}</td>
+                            <td>{speaker.country}</td>      
+                        </tr>
+                    ))}
+                </tbody>
+            </table>   
             <br />
             <br />            
         </div>
