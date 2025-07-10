@@ -22,10 +22,14 @@ const REGISTRATION_QUERY = `{
       earlyAccompanyingPerson,
       lateParticipants,
       lateStudents,
-      lateAccompanyingPerson
+      lateAccompanyingPerson,
+      accommodationParticipants,
+      accommodationStudents,
+      accommodationAccompanyingPerson
     },
     earlyRegistrationDate,
     lateRegistrationDate,
+    accommodationTitle,
     registrationFeesTitle,
     registrationNote
   },
@@ -66,7 +70,7 @@ const RegistrationPage = async () => {
                         <th></th>
                         <th>Regular<br /> participants</th>
                         <th>Students<sup>*</sup><br /></th>
-                        <th>Accompanying<br /> persons</th>                    
+                        <th>Accompanying<br /> persons</th>                 
                     </tr>
                 </thead>
                 <tbody>
@@ -81,6 +85,12 @@ const RegistrationPage = async () => {
                         <td>{registrationFees?.registrationFeeStructure?.[0]?.lateParticipants}</td>
                         <td>{registrationFees?.registrationFeeStructure?.[0]?.lateStudents}</td>
                         <td>{registrationFees?.registrationFeeStructure?.[0]?.lateAccompanyingPerson}</td>                    
+                    </tr>
+                    <tr>
+                        <td><PortableText value={registrationFees?.accommodationTitle} /></td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.accommodationParticipants}</td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.accommodationStudents}</td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.accommodationAccompanyingPerson}</td>                    
                     </tr>
                 </tbody>
             </table> 
