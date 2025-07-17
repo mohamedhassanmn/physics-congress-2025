@@ -35,13 +35,9 @@ const PROGRAM_SCHEDULE_QUERY = `*[_type == "sessionSchedule"]|order(date asc){
   }
 }`;
 
-const SchedulePage = async ({
-  params,
-}:
-  | { params: { subtab: string } }
-  | Promise<{ params: { subtab: string } }>) => {
-  const resolved = await params;
-  const { subtab } = resolved;
+const SchedulePage = async (props: { params: { subtab: string } } | Promise<{ params: { subtab: string } }>) => {
+  const { params } = await props;
+  const { subtab } = params;
   const data = await client.fetch(PROGRAM_SCHEDULE_QUERY);
   const formattedDate = (date: string | number | Date) => {
     return new Date(date).toLocaleDateString("en-US", {
