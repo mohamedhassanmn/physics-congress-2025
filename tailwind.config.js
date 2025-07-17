@@ -19,6 +19,7 @@ module.exports = {
           800: "var(--color-primary-800)",
           900: "var(--color-primary-900)",
         },
+        "custom-gray": "#aaaaaa",
       },
     },
   },

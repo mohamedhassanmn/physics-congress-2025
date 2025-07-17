@@ -1,4 +1,7 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 :root {
   --background: #ffffff;
@@ -544,11 +547,11 @@ ol,ul {
   /* Ensures images inside the footer do not exceed 100px in height */
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .active-tab {
   position: relative;
 }
 
-h1::after, h2::after, h3::after, h4::after {
+h1::after, h2::after, h3::after, h4::after, .active-tab::after {
   content: '';
   position: absolute;
   left: 0;

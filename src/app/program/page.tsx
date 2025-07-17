@@ -1,4 +1,5 @@
 import { PortableText } from '@portabletext/react';
+import Link from "next/link";
 
 import { client } from "@/sanity/client";
 
@@ -62,11 +63,11 @@ const ProgramPage = async () => {
                         <br />
                         <div>
                             {program.clickableCTA?.map((cta: any, ctaIndex: number) => (
-                                <a key={ctaIndex} href={cta.buttonLink} target="_blank">
+                                <Link key={ctaIndex} href={cta.buttonLink}>
                                     <button className="button" style={{ verticalAlign: "middle" }}>
                                         <span>{cta.buttonText}</span>
                                     </button>
-                                </a>
+                                </Link>
                             ))}
                         </div>
                         <br />

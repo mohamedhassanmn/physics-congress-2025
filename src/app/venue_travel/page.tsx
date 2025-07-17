@@ -1,4 +1,5 @@
 import { PortableText } from '@portabletext/react';
+import Link from "next/link";
 
 import { client } from "@/sanity/client";
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
@@ -142,12 +143,12 @@ const VenueTravelPage = async () => {
           </div>
         ) : null)}
 
-        <a id="visa_information"><h1>{visaInfoTitle}</h1></a>
+        <Link href="#visa_information"><h1 id="visa_information">{visaInfoTitle}</h1></Link>
         <PortableText value={visaInfoContent} components={portableTextComponents} />
         <br />
         <br />
         <br />
-        <a id="tourist_information"><h1>{tourInfoTitle}</h1></a>
+        <Link href="#tourist_information"><h1 id="tourist_information">{tourInfoTitle}</h1></Link>
         <PortableText value={tourInfoContent} components={portableTextComponents} />
         <br />
         <div className='flex w-full gap-2 pr-5'>

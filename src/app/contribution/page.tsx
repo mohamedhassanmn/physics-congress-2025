@@ -1,4 +1,5 @@
 import { PortableText } from '@portabletext/react';
+import Link from "next/link";
 
 import { client } from "@/sanity/client";
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
@@ -40,7 +41,7 @@ const ContributionPage = async () => {
         <h1>{abstractSubmissionSection?.abstractSubmissionTitle}</h1>
         <PortableText value={abstractSubmissionSection?.content} components={portableTextComponents} />
         <br />
-        <a href={abstractSubmissionSection?.clickableCTA?.[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle" }}><span>{abstractSubmissionSection?.clickableCTA?.[0]?.buttonText}</span></button></a>
+        <Link href={abstractSubmissionSection?.clickableCTA?.[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle" }}><span>{abstractSubmissionSection?.clickableCTA?.[0]?.buttonText}</span></button></Link>
         <br />
         <br />
         <br />

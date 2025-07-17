@@ -1,6 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { routes } from "@/helper";
 
 const NavBar = () => {  
     const pathname= usePathname();
@@ -11,57 +13,39 @@ const NavBar = () => {
         >
               <ul>
                 <li>
-                  <a href="/" className={pathname === "/" ? "active" : ""}>
+                  <Link href={routes.home} className={pathname === "/" ? "active" : ""}>
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/program"
-                    className={pathname === "/program" ? "active" : ""}
-                  >
+                  <Link href={routes.program} className={pathname === routes.program ? "active" : ""}>
                     Program
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/registration"
-                    className={pathname === "/registration" ? "active" : ""}
-                  >
+                  <Link href={routes.registration} className={pathname === routes.registration ? "active" : ""}>
                     Registration
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/contribution"
-                    className={pathname === "/contribution" ? "active" : ""}
-                  >
+                  <Link href={routes.contribution} className={pathname === routes.contribution ? "active" : ""}>
                     Contribution
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/venue_travel"
-                    className={pathname === "/venue_travel" ? "active" : ""}
-                  >
+                  <Link href={routes.venueAndTravel} className={pathname === routes.venueAndTravel ? "active" : ""}>
                     Venue and travel
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/awards"
-                    className={pathname === "/awards" ? "active" : ""}
-                  >
+                  <Link href={routes.awards} className={pathname === routes.awards ? "active" : ""}>
                     Awards
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/committees"
-                    className={pathname === "/committees" ? "active" : ""}
-                  >
+                  <Link href={routes.committees} className={pathname === routes.committees ? "active" : ""}>
                     Committees
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

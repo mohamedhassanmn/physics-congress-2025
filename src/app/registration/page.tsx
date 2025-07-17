@@ -1,4 +1,5 @@
 import { PortableText } from '@portabletext/react';
+import Link from "next/link";
 
 import { client } from "@/sanity/client";
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
@@ -59,7 +60,7 @@ const RegistrationPage = async () => {
             <h1>{registrationForms?.name}</h1>
             <PortableText value={registrationForms?.registerationFormDetails} />
             <br />
-            <a href={registrationForms?.clickableCTA[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle" }}><span>{registrationForms?.clickableCTA[0]?.buttonText}</span></button></a>
+            <Link href={registrationForms?.clickableCTA[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle" }}><span>{registrationForms?.clickableCTA[0]?.buttonText}</span></button></Link>
             <br />
             <br />        
             <br />
