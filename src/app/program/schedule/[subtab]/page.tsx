@@ -2,6 +2,7 @@ import { client } from "@/sanity/client";
 import ScheduleTabs from "@/components/atoms/scheduleTabs";
 import Topics from "@/components/molecules/topics";
 import Authors from "@/components/molecules/authors";
+import Keywords from "@/components/molecules/keywords";
 
 const PROGRAM_SCHEDULE_QUERY = `*[_type == "sessionSchedule"]|order(date asc){
   _id,
@@ -45,7 +46,16 @@ const AUTHORS_QUERY = `*[_type == "authorType"]|order(name asc){
     _id,
     title
   }
-}`
+}`;
+
+const KEYWORDS_QUERY = `*[_type == "keywordType" && count(*[_type == "topicsType" && references(^._id)]) > 0] | order(name asc) {
+  _id,
+  name,
+  "topics": *[_type == "topicsType" && references(^._id)]{
+    _id,
+    title
+  }
+}`;
 
 const SchedulePage = async ({
   params,
@@ -54,16 +64,17 @@ const SchedulePage = async ({
 }) => {
   const { subtab } = await params;
 
-  let query=null;
+  let query = null;
 
   if (subtab === "topics") {
-    query= PROGRAM_SCHEDULE_QUERY
+    query = PROGRAM_SCHEDULE_QUERY;
   } else if (subtab === "authors") {
     query = AUTHORS_QUERY;
+  } else if (subtab === "keywords") {
+    query = KEYWORDS_QUERY;
   }
 
-  const data = query && await client.fetch(query);
-
+  const data = query && (await client.fetch(query));
   return (
     <div className="p-4 bg-white">
       <ScheduleTabs />
@@ -71,6 +82,7 @@ const SchedulePage = async ({
       <br />
       {subtab == "topics" ? <Topics topicData={data} /> : null}
       {subtab == "authors" ? <Authors authorsData={data} /> : null}
+      {subtab == "keywords" ? <Keywords keywordsData={data} /> : null}
     </div>
   );
 };
