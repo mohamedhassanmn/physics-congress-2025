@@ -96,7 +96,7 @@ a:hover {
 }
 
 #banner-text {
-  padding: 10px 0px 0px 20px;
+  padding: 10px 16px 0px;
 }
 
 #nav {
@@ -185,7 +185,7 @@ a:hover {
   /* width: 906px; */
   float: left;
   background: white;
-  padding: 10px 0px 0px 20px;
+  padding: 10px 16px 0px;
 }
 
 .mid-leftouter {
@@ -202,19 +202,19 @@ a:hover {
 .mid-wrapper-bttm-white {
   float: left;
   background: white;
-  padding: 10px 0px 0px 20px;
+  padding: 10px 16px 0px;
 }
 
 .mid-left-container {
   width: 618px;
   float: left;
-  padding: 10px 0px 0px 20px;
+  padding: 10px 16px 0px;
 }
 
 .mid-container {
   width: 926px;
   float: left;
-  padding: 10px 0px 0px 20px;
+  padding: 10px 16px 0px;
 }
 
 .column2 {
@@ -385,8 +385,7 @@ h1 {
 
 h2 {
   /* background: url(/images/divider-2.jpg) bottom no-repeat; */
-  display: block;
-  width: 280px;
+  display: inline-block;
   margin: 0px 0px 10px 0px;
   padding: 0px 0px 8px 15px;
   font-family: Arial, Helvetica, sans-serif;

@@ -79,9 +79,9 @@ const ProgramPage = async () => {
                     <tbody>
                         {plenarySpeakers?.speakers?.map((speaker: any, index: number) => (
                             <tr key={index}>
-                                <td>{speaker.name}</td>
-                                <td>{speaker.organization}</td>
-                                <td>{speaker.topic}</td>
+                                <td className='w-1/6'>{speaker.name}</td>
+                                <td className='w-2/6'>{speaker.organization}</td>
+                                <td className='w-3/6'>{speaker.topic}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -93,9 +93,9 @@ const ProgramPage = async () => {
                     <tbody>
                         {invitedSpeakers?.speakers?.map((speaker: any, index: number) => (
                             <tr key={index}>
-                                <td>{speaker.name}</td>
-                                <td>{speaker.organization}</td>
-                                <td>{speaker.topic}</td>
+                                <td className='w-1/6'>{speaker.name}</td>
+                                <td className='w-2/6'>{speaker.organization}</td>
+                                <td className='w-3/6'>{speaker.topic}</td>
                             </tr>
                         ))}
                     </tbody>
