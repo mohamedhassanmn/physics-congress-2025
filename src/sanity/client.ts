@@ -1,5 +1,5 @@
 import { createClient } from "next-sanity";
-import HttpsProxyAgent from "https-proxy-agent";
+import { HttpsProxyAgent } from "https-proxy-agent";
 
 const proxyUrl = process.env.HTTPS_PROXY || undefined;
 
