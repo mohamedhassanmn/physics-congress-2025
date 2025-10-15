@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { proxyAgent } from '@/sanity/client';
+import {client} from '@/sanity/client';
 
 const AWARDS_QUERY = `*[_type == "awardsSection"]{
   _id,
@@ -13,7 +13,7 @@ const AWARDS_QUERY = `*[_type == "awardsSection"]{
 
 export async function GET() {
   try {
-    const res = await fetch(`https://7v8y29gj.api.sanity.io/v2025-10-14/data/query/production?query=${encodeURIComponent(AWARDS_QUERY)}`, { agent: proxyAgent });
+    const res = await client.fetch(AWARDS_QUERY);
     const json = await res.json();
     const data = json.result;
     return new Response(JSON.stringify(data), {
