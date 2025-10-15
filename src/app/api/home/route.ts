@@ -52,6 +52,7 @@ const ROOT_QUERY = `{
 
 export async function GET() {
   try {
+    console.log("Using proxy agent:", !!proxyAgent);
     const data = await client.fetch(ROOT_QUERY,{agent: proxyAgent});    
     return new Response(JSON.stringify(data), {
         status: 200,    
