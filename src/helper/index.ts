@@ -10,4 +10,8 @@ export const routes = {
     topics: "/program/schedule/topics",
     authors: "/program/schedule/authors",
     keywords: "/program/schedule/keywords",
-}
+};
+
+export const baseUrl = process.env.VERCEL_URL 
+  ? process.env.VERCEL_URL
+  : 'http://localhost:3000';

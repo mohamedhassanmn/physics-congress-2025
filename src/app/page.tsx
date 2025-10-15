@@ -1,59 +1,8 @@
+import { baseUrl } from '@/helper';
 import { PortableText } from '@portabletext/react';
 
-import { client } from "@/sanity/client";
-
-const ROOT_QUERY = `{
-  "welcomeSections": *[_type == "welcomeSection"]{
-    welcomeTitle,
-    welcomeContent,
-    organizers[]->|order(rank asc){
-      name,
-      role,
-      designationOrganization,
-      rank
-    }
-  },
-  "sponsorSections": *[_type == "sponsorSection"]{
-    sponsorTitle,
-    sponsorContent,
-    sponsors[]->|order(rank asc){
-      sponsorName,
-      sponsorContent,
-      image{
-        asset->{
-          _id,
-          url
-        },
-        alt
-      },
-      rank
-    }
-  },
-  "conferenceSections": *[_type == "conferenceSection"]{
-    conferenceTitle,
-    conferenceList[]->|order(rank asc){
-      policyName,
-      policyContent
-    }
-  },
-  "importantDateSections": *[_type == "importantDateSection"]{
-    importantDateTitle,
-    importantDateList[]->|order(rank asc){
-      dateContent
-    }
-  },
-  "contactSections": *[_type == "contactSection"]{
-    contactTitle,
-    contactContent
-  },
-  "promotionSections": *[_type == "promotionSection"]{
-    promotionTitle,
-    promotionContent
-  }
-}`;
-
 const Home = async () => {
-    const data = await client.fetch(ROOT_QUERY);
+    const data = await fetch(baseUrl+"/api/home").then(res => res.json());
     const welcomeSection = data?.welcomeSections?.[0];
     const sponsorSection = data?.sponsorSections?.[0];
     const conferenceSection = data?.conferenceSections?.[0];
