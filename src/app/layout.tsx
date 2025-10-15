@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { Inter } from "next/font/google";
 import { PortableText } from "next-sanity";
 import "./globals.css";
-import { client } from "@/sanity/client";
+import { baseUrl } from '@/helper';
 import NavBar from "@/components/atoms/navBar";
 import { generateColorShades} from "@/theme/utils";
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
@@ -37,9 +37,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const data = await client.fetch(LAYOUT_QUERY);
+  const res = await fetch(baseUrl+`/api/layout`);
+  const data = await res.json();
 
-  const layoutSection = data?.layoutSections[0];
+  const layoutSection = data?.layoutSections?.[0];
   const heroImageUrl = layoutSection?.heroImage?.asset?.url;
   const baseColor = layoutSection?.themeColor || "rgb(0, 43, 65)";
   const themeVars = generateColorShades(baseColor);

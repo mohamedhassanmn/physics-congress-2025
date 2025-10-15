@@ -1,61 +1,8 @@
-import { client } from "@/sanity/client";
+import { baseUrl } from '@/helper';
 import ScheduleTabs from "@/components/atoms/scheduleTabs";
 import Topics from "@/components/molecules/topics";
 import Authors from "@/components/molecules/authors";
 import Keywords from "@/components/molecules/keywords";
-
-const PROGRAM_SCHEDULE_QUERY = `*[_type == "sessionSchedule"]|order(date asc){
-  _id,
-  date,
-  sessions[]{
-    timeFrom,
-    timeTo,
-    title,
-    chair[]->{
-      _id,
-      name
-    },
-    location,
-    subSessions[]{
-      timeFrom,
-      timeTo,
-      subSessions[]->{
-        _id,
-        title,
-        presenter->{
-          _id,
-          name
-        },
-        authors[]->{
-          _id,
-          name
-        },
-        abstract
-      }
-    }
-  }
-}`;
-
-const AUTHORS_QUERY = `*[_type == "authorType"]|order(name asc){
-  _id,
-  name,
-  affiliation,
-  webpage,
-  photo,
-  "topics": *[_type == "topicsType" && references(^._id)]{
-    _id,
-    title
-  }
-}`;
-
-const KEYWORDS_QUERY = `*[_type == "keywordType" && count(*[_type == "topicsType" && references(^._id)]) > 0] | order(name asc) {
-  _id,
-  name,
-  "topics": *[_type == "topicsType" && references(^._id)]{
-    _id,
-    title
-  }
-}`;
 
 const SchedulePage = async ({
   params,
@@ -64,17 +11,7 @@ const SchedulePage = async ({
 }) => {
   const { subtab } = await params;
 
-  let query = null;
-
-  if (subtab === "topics") {
-    query = PROGRAM_SCHEDULE_QUERY;
-  } else if (subtab === "authors") {
-    query = AUTHORS_QUERY;
-  } else if (subtab === "keywords") {
-    query = KEYWORDS_QUERY;
-  }
-
-  const data = query && (await client.fetch(query));
+  const data = await fetch(baseUrl+`/api/program/schedule?type=${subtab}`).then(r => r.json());
   return (
     <div className="p-4 bg-white">
       <ScheduleTabs />

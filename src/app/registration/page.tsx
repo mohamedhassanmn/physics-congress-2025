@@ -1,51 +1,11 @@
+import { baseUrl } from '@/helper';
 import { PortableText } from '@portabletext/react';
 import Link from "next/link";
-
-import { client } from "@/sanity/client";
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
 
-const REGISTRATION_QUERY = `{
-  "registrationSections": *[_type == "registrationSection"]{
-    registrationContent
-  },
-  "registrationForms": *[_type == "registrationFormType"]{
-    name,
-    registerationFormDetails,
-    clickableCTA[]->{
-      buttonText,
-      buttonLink
-    }
-  },
-  "registrationFees": *[_type == "registrationFeeType"]{
-    registrationFeeStructure[]{
-      earlyParticipants,
-      earlyStudents,
-      earlyAccompanyingPerson,
-      lateParticipants,
-      lateStudents,
-      lateAccompanyingPerson,
-      accommodationParticipants,
-      accommodationStudents,
-      accommodationAccompanyingPerson
-    },
-    earlyRegistrationDate,
-    lateRegistrationDate,
-    accommodationTitle,
-    registrationFeesTitle,
-    registrationNote
-  },
-  "cancellationAndRefundPolicies": *[_type == "cancellationAndRefundPolicy"]{
-    cancellationTitle,
-    cancellationContent
-  },
-  "visaInformation": *[_type == "visaInformation"]{
-    visaTitle,
-    visaInfoContent
-  }
-}`;
-
 const RegistrationPage = async () => {
-    const data = await client.fetch(REGISTRATION_QUERY);
+  const res = await fetch(baseUrl + '/api/registration');
+  const data = await res.json();
     const registrationSection = data?.registrationSections?.[0];
     const registrationForms = data?.registrationForms?.[0] || {};
     const registrationFees = data?.registrationFees?.[0];

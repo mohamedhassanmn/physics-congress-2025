@@ -1,20 +1,10 @@
 import { PortableText } from '@portabletext/react';
-
-import { client } from "@/sanity/client";
+import { baseUrl } from '@/helper';
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
 
-const AWARDS_QUERY = `*[_type == "awardsSection"]{
-  _id,
-  scientistPrizeTitle,
-  scientistPrizeContent,
-  posterAwardsTitle,
-  posterAwardsContent,
-  travelAndParticipationAwardsTitle,
-  travelAndParticipationAwardsContent
-}`;
-
 const AwardsPage = async () => {
-    const data = await client.fetch(AWARDS_QUERY);
+    const res = await fetch(baseUrl+`/api/awards`);
+    const data = await res.json();
     const awardsSection = data?.[0];
     const scientistPrizeTitle = awardsSection?.scientistPrizeTitle || "IUPAP Early Career Scientist Prize";
     const scientistPrizeContent = awardsSection?.scientistPrizeContent || [];

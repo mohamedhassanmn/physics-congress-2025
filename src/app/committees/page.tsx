@@ -1,36 +1,10 @@
 import { PortableText } from '@portabletext/react';
-
-import { client } from "@/sanity/client";
+import { baseUrl } from '@/helper';
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
 
-const COMMITTEES_QUERY = `*[_type == "committeesSection"]{
-  _id,
-  programCommitteesTitle,
-  programCommitteesSpeakers[]->{
-    _id,
-    name,
-    organization,
-    country
-  },
-  advisoryCommitteesTitle,
-  advisoryCommitteesSpeakers[]->{
-    _id,
-    name,
-    organization,
-    country
-  },
-  localOrganizingCommitteeTitle,
-  localOrganizingCommitteeContent,
-  localOrganizingCommittee[]->{
-    _id,
-    name,
-    organization,
-    country
-  }
-}`;
-
 const CommitteesPage = async () => {
-    const data = await client.fetch(COMMITTEES_QUERY);
+    const res = await fetch(baseUrl+`/api/committees`);
+    const data = await res.json();
     const programCommitteesTitle = data?.[0]?.programCommitteesTitle || "Program Committee";
     const programCommitteesSpeakers = data?.[0]?.programCommitteesSpeakers || [];
     const advisoryCommitteesTitle = data?.[0]?.advisoryCommitteesTitle || "International Advisory Committee";

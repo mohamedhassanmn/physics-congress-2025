@@ -1,48 +1,10 @@
+import { baseUrl } from '@/helper';
 import { PortableText } from '@portabletext/react';
 import Link from "next/link";
 
-import { client } from "@/sanity/client";
-
-const PROGRAM_QUERY = `{
-  "conferenceTopics": *[_type == "conferenceTopics"]{
-    topicTitle,
-    topicContent
-  },
-  "scientificPrograms": *[_type == "scientificProgramSection"]{
-    scientificProgramTitle,
-    scientificProgramContent[]->{
-      name,
-      scientificProgramContent,
-      clickableCTA[]->{
-        buttonText,
-        buttonLink
-      }
-    }
-  },
-  "plenarySpeakers": *[_type == "plenarySpeakers"]{
-    title,
-    speakers[]->{
-      name,
-      organization,
-      topic
-    },
-  },
-  "invitedSpeakers": *[_type == "invitedSpeakers"]{
-    title,
-    speakers[]->{
-      name,
-      organization,
-      topic
-    },
-  },
-  "socialPrograms": *[_type == "socialProgram"]{
-    programTitle,
-    programContent
-  }
-}`;
-
 const ProgramPage = async () => {
-    const data = await client.fetch(PROGRAM_QUERY);
+  const res = await fetch(baseUrl+`/api/program`);
+  const data = await res.json();
     const conferenceTopics = data?.conferenceTopics?.[0];
     const scientificPrograms = data?.scientificPrograms?.[0];
     const invitedSpeakers = data?.invitedSpeakers?.[0];

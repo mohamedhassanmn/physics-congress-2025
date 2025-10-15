@@ -1,64 +1,11 @@
+import { baseUrl } from '@/helper';
 import { PortableText } from '@portabletext/react';
 import Link from "next/link";
-
-import { client } from "@/sanity/client";
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
 
-const VENUETRAVEL_QUERY = `*[_type == "conferenceVenueSection"]{
-  _id,
-  venueTitle,
-  venueContent,
-  venueImages[]{
-    asset->{
-      _id,
-      url,
-      originalFilename
-    }
-  },
-  sessionInfo[]{
-    session,
-    campus,
-    address,
-    buildingAndRoom,
-    buildingImage{
-      asset->{
-        _id,
-        url,
-        originalFilename
-      }
-    }
-  },
-  accommodationTitle,
-  accommodationContent,
-  travelTitle,
-  travelContent,
-  travelImage{
-    asset->{
-      _id,
-      url,
-      originalFilename
-    }
-  },
-  travelBy[]->{
-    _id,
-    transportationTitle,
-    transportationContent
-  },
-  visaInfoTitle,
-  visaInfoContent,
-  tourInfoTitle,
-  tourInfoContent,
-  tourPlaceImages[]{
-    asset->{
-      _id,
-      url,
-      originalFilename
-    }
-  }
-}`;
-
 const VenueTravelPage = async () => {
-  const data = await client.fetch(VENUETRAVEL_QUERY);
+  const res = await fetch(baseUrl + '/api/venue_travel');
+  const data = await res.json();
   const venueSection = data?.[0];
   const venueTitle = venueSection?.venueTitle || "Conference Venue";
   const venueContent = venueSection?.venueContent || [];

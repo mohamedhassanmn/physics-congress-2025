@@ -1,35 +1,11 @@
 import { PortableText } from '@portabletext/react';
+import { baseUrl } from '@/helper';
 import Link from "next/link";
-
-import { client } from "@/sanity/client";
 import { portableTextComponents } from "@/components/atoms/sanitySupportComponent";
 
-const CONTRIBUTION_QUERY = `{
-  "contributionSections": *[_type == "contributionSection"]{
-    contributionContent
-  },
-  "abstractSubmissionSections": *[_type == "abstractSubmissionSection"]{
-    abstractSubmissionTitle,
-    content,
-    clickableCTA[]->{
-      buttonText,
-      buttonLink
-    },
-    abstractSubmissionInfo[]->{
-      rank,
-      name,
-      content
-    }
-  },
-  "presentationGuidelinesSections": *[_type == "presentationGuidelinesSection"]{
-    presentationGuidelinesTitle,
-    content
-  }
-}`;
-
-
 const ContributionPage = async () => {
-  const data = await client.fetch(CONTRIBUTION_QUERY);
+  const res = await fetch(baseUrl+`/api/contribution`);
+  const data = await res.json();
   const contributionSection = data?.contributionSections?.[0];
   const abstractSubmissionSection = data?.abstractSubmissionSections?.[0] || {};
   const presentationGuidelinesSection = data?.presentationGuidelinesSections?.[0] || {};
