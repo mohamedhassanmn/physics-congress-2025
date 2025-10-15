@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 
 const Home = async () => {
     const data = await fetch(baseUrl+"/api/home").then(res => res.json());
+    console.log(data,"home data");
     const welcomeSection = data?.welcomeSections?.[0];
     const sponsorSection = data?.sponsorSections?.[0];
     const conferenceSection = data?.conferenceSections?.[0];
