@@ -1,5 +1,4 @@
-import fetch from 'node-fetch';
-import { client } from "@/sanity/client";
+import { querySanity } from '@/sanity/client';
 
 const ROOT_QUERY = `{
   "welcomeSections": *[_type == "welcomeSection"]{
@@ -53,23 +52,22 @@ const ROOT_QUERY = `{
 
 export async function GET() {
   try {
-    const res = await client.fetch(ROOT_QUERY);
-    const json = await res.json();
-    const data = json.result;
-    console.log(data,"check data"); 
+    const res = await querySanity(ROOT_QUERY);
+    const data = res?.result;
+    // console.log(data, "check data");
     return new Response(JSON.stringify(data), {
-        status: 200,    
-        headers: {
-            'Content-Type': 'application/json'
-        }
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
   } catch (error) {
     console.error("Error fetching data:", error);
     return new Response(JSON.stringify({ error: "Failed to fetch data" }), {
-        status: 500,
-        headers: {
-            'Content-Type': 'application/json'
-        }
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
-  } 
+  }
 }

@@ -1,5 +1,4 @@
-import fetch from 'node-fetch';
-import {client} from '@/sanity/client';
+import { querySanity} from '@/sanity/client';
 
 const AWARDS_QUERY = `*[_type == "awardsSection"]{
   _id,
@@ -13,9 +12,8 @@ const AWARDS_QUERY = `*[_type == "awardsSection"]{
 
 export async function GET() {
   try {
-    const res = await client.fetch(AWARDS_QUERY);
-    const json = await res.json();
-    const data = json.result;
+    const res = await querySanity(AWARDS_QUERY);
+    const data = res?.result;
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }

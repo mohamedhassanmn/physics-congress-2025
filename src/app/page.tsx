@@ -2,8 +2,8 @@ import { baseUrl } from '@/helper';
 import { PortableText } from '@portabletext/react';
 
 const Home = async () => {
-    const data = await fetch(baseUrl+"/api/home").then(res => res.json());
-    console.log(data,"home data");
+    const res = await fetch(baseUrl+`/api/home`);
+     const data = await res.json();
     const welcomeSection = data?.welcomeSections?.[0];
     const sponsorSection = data?.sponsorSections?.[0];
     const conferenceSection = data?.conferenceSections?.[0];
