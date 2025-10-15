@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 import { client, proxyAgent } from "@/sanity/client";
 
 const ROOT_QUERY = `{
@@ -53,7 +54,11 @@ const ROOT_QUERY = `{
 export async function GET() {
   try {
     console.log("Using proxy agent:", !!proxyAgent);
-    const data = await client.fetch(ROOT_QUERY,{agent: proxyAgent});    
+    // const data = await client.fetch(ROOT_QUERY,{agent: proxyAgent});   
+    const res = await fetch(`https://7v8y29gj.api.sanity.io/v2025-10-14/data/query/production?query=${encodeURIComponent(ROOT_QUERY)}`,{agent: proxyAgent});    
+    const json = await res.json();
+    const data = json.result;
+    // console.log(data,"check data"); 
     return new Response(JSON.stringify(data), {
         status: 200,    
         headers: {
