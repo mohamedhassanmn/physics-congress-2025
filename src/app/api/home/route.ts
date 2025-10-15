@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { client, proxyAgent } from "@/sanity/client";
 
 const ROOT_QUERY = `{
   "welcomeSections": *[_type == "welcomeSection"]{
@@ -52,7 +52,7 @@ const ROOT_QUERY = `{
 
 export async function GET() {
   try {
-    const data = await client.fetch(ROOT_QUERY);    
+    const data = await client.fetch(ROOT_QUERY,{agent: proxyAgent});    
     return new Response(JSON.stringify(data), {
         status: 200,    
         headers: {
