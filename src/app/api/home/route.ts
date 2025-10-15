@@ -58,7 +58,7 @@ export async function GET() {
     const res = await fetch(`https://7v8y29gj.api.sanity.io/v2025-10-14/data/query/production?query=${encodeURIComponent(ROOT_QUERY)}`,{agent: proxyAgent});    
     const json = await res.json();
     const data = json.result;
-    // console.log(data,"check data"); 
+    console.log(data,"check data"); 
     return new Response(JSON.stringify(data), {
         status: 200,    
         headers: {
