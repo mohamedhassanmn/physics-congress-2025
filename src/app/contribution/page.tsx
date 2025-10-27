@@ -17,7 +17,7 @@ const ContributionPage = async () => {
         <h1>{abstractSubmissionSection?.abstractSubmissionTitle}</h1>
         <PortableText value={abstractSubmissionSection?.content} components={portableTextComponents} />
         <br />
-        <Link href={abstractSubmissionSection?.clickableCTA?.[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle" }}><span>{abstractSubmissionSection?.clickableCTA?.[0]?.buttonText}</span></button></Link>
+        <Link href={abstractSubmissionSection?.clickableCTA?.[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle", backgroundColor: 'var(--color-primary-150)' }}><span>{abstractSubmissionSection?.clickableCTA?.[0]?.buttonText}</span></button></Link>
         <br />
         <br />
         <br />

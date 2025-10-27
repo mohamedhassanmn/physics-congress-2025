@@ -44,12 +44,12 @@ p {
 }
 
 a {
-  color: #1E64C8;
+  color: var(--color-primary-anchor);
   text-decoration: none;
 }
 
 a:hover {
-  color: #1E64C8;
+  color: var(--color-primary-anchor);
   text-decoration: underline;
 }
 

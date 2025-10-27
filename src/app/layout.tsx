@@ -10,28 +10,6 @@ import { portableTextComponents } from "@/components/atoms/sanitySupportComponen
 
 const inter = Inter({ subsets: ["latin"] });
 
-const LAYOUT_QUERY = `{
-  "layoutSections": *[_type == "layoutSection"]{
-    pageTitle,
-    layoutContent,
-    themeColor,
-    heroImage{
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    footerImages[]{
-      asset->{
-        _id,
-        url
-      },
-      alt
-    }
-  }
-}`;
-
 export default async function RootLayout({
   children
 }: {
@@ -50,8 +28,8 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
-        <title>{layoutSection?.pageTitle || "ICPP 2024"}</title>
-        <meta name="description" content="21st International Congress on Plasma Physics" />
+        <title>{layoutSection?.pageTitle || "ICPP 2026"}</title>
+        <meta name="description" content="22nd International Congress on Plasma Physics" />
         <meta name="keywords" content="plasma physics,plasma technology,astrophysics,nuclear fusion" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="cache-control" content="max-age=0" />
