@@ -11,7 +11,8 @@ const NavBar = () => {
       id="nav"
       style={{
         background:
-          "linear-gradient(to bottom, rgba(0,0,0,0.5), var(--color-primary-150))",
+        "var(--color-nav)",
+          // "linear-gradient(to bottom, rgba(0,0,0,0.5), var(--color-primary-150))",
       }}
     >
       <ul>

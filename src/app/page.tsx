@@ -39,7 +39,7 @@ const Home = async () => {
                         </div>
                     </div>
                 </div>
-                <div className="right-container" style={{backgroundColor: 'var(--color-primary-150)'}}>
+                <div className="right-container" style={{backgroundColor: 'var(--color-secondary)'}}>
                     <div className="right-container-top">
                         <h3>{importantDateSection?.importantDateTitle}</h3>
                         <ul>

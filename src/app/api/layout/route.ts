@@ -4,7 +4,9 @@ const LAYOUT_QUERY = `{
   "layoutSections": *[_type == "layoutSection"]{
     pageTitle,
     layoutContent,
-    themeColor,
+    primaryColor,
+    secondaryColor,
+    navColor,
     heroImage{ asset->{ _id, url }, alt },
     footerImages[]{ asset->{ _id, url }, alt }
   }

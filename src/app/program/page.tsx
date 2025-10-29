@@ -26,7 +26,7 @@ const ProgramPage = async () => {
                         <div>
                             {program.clickableCTA?.map((cta: any, ctaIndex: number) => (
                                 <Link key={ctaIndex} href={cta.buttonLink}>
-                                    <button className="button" style={{ verticalAlign: "middle", backgroundColor: 'var(--color-primary-150)' }}>
+                                    <button className="button" style={{ verticalAlign: "middle", backgroundColor: 'var(--color-secondary)' }}>
                                         <span>{cta.buttonText}</span>
                                     </button>
                                 </Link>

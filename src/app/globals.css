@@ -44,12 +44,12 @@ p {
 }
 
 a {
-  color: var(--color-primary-anchor);
+  color: var(--color-secondary);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--color-primary-anchor);
+  color: var(--color-secondary);
   text-decoration: underline;
 }
 
@@ -141,7 +141,7 @@ a:hover {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-  color: var(--color-primary-400);
+  color: var(--color-primary-500);
   line-height: 18px;
   text-decoration: none;
 }
@@ -159,10 +159,11 @@ a:hover {
 
 #nav ul li a.active {
   float: left;
-  padding: 0px 22px;
+  padding: 0px 19px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+  font-weight: 600;
   color: #fff;
   line-height: 18px;
   text-decoration: none;
@@ -182,7 +183,7 @@ a:hover {
 }
 
 .mid-wrapper-top-white {
-  /* width: 906px; */
+  width: 100%;
   float: left;
   background: white;
   padding: 10px 16px 0px;
@@ -557,6 +558,6 @@ h1::after, h2::after, h3::after, h4::after, .active-tab::after {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: linear-gradient(to right, var(--color-primary-300), transparent);
+  background: linear-gradient(to right, var(--color-secondary), transparent);
   pointer-events: none;
 }

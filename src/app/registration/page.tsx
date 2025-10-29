@@ -20,7 +20,7 @@ const RegistrationPage = async () => {
             <h1>{registrationForms?.name}</h1>
             <PortableText value={registrationForms?.registerationFormDetails} />
             <br />
-            <Link href={registrationForms?.clickableCTA[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle", backgroundColor: 'var(--color-primary-150)' }}><span>{registrationForms?.clickableCTA[0]?.buttonText}</span></button></Link>
+            <Link href={registrationForms?.clickableCTA[0]?.buttonLink} target="_blank"><button className="button" style={{ verticalAlign: "middle", backgroundColor: 'var(--color-secondary)' }}><span>{registrationForms?.clickableCTA[0]?.buttonText}</span></button></Link>
             <br />
             <br />        
             <br />
@@ -36,7 +36,7 @@ const RegistrationPage = async () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td width="150"><PortableText value={registrationFees?.earlyRegistrationDate} /></td>
+                        <td width="180"><PortableText value={registrationFees?.earlyRegistrationDate} /></td>
                         <td width="100">{registrationFees?.registrationFeeStructure?.[0]?.earlyParticipants}</td>
                         <td width="100">{registrationFees?.registrationFeeStructure?.[0]?.earlyStudents}</td>
                         <td width="120">{registrationFees?.registrationFeeStructure?.[0]?.earlyAccompanyingPerson}</td>                    

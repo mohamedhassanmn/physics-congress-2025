@@ -6,8 +6,8 @@ import tinycolor from "tinycolor2";
  * @param baseColor - The base color (hex, rgb, etc.)
  * @returns Record of CSS variable names to color values.
  */
-export const generateColorShades = (baseColor: string): Record<string, string> => {
-  const color = tinycolor(baseColor);
+export const generateColorShades = (primaryColor: string, secondaryColor: string, navColor: string ): Record<string, string> => {
+  const color = tinycolor(primaryColor);
 
   return {
     "--color-primary-50": tinycolor.mix("white", color.clone(), 5).toHexString(),
@@ -26,5 +26,7 @@ export const generateColorShades = (baseColor: string): Record<string, string> =
     "--color-primary-700": tinycolor.mix("black", color.clone(), 40).toHexString(),
     "--color-primary-800": tinycolor.mix("black", color.clone(), 55).toHexString(),
     "--color-primary-900": tinycolor.mix("black", color.clone(), 70).toHexString(),
+    "--color-secondary": secondaryColor,
+    "--color-nav": navColor,
   };
 };

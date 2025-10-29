@@ -20,8 +20,10 @@ export default async function RootLayout({
 
   const layoutSection = data?.layoutSections?.[0];
   const heroImageUrl = layoutSection?.heroImage?.asset?.url;
-  const baseColor = layoutSection?.themeColor || "rgb(0, 43, 65)";
-  const themeVars = generateColorShades(baseColor);
+  const primaryColor = layoutSection?.primaryColor || "#e1d1c9";
+  const secondaryColor = layoutSection?.secondaryColor ||  "#c09068";
+  const navColor = layoutSection?.navColor || "#417078";
+  const themeVars = generateColorShades(primaryColor, secondaryColor, navColor);
   // Generate CSS variable string for SSR (ensure variables are prefixed with --)
   const cssVars = `:root { ${Object.entries(themeVars).map(([k, v]) => `${k}: ${v};`).join(' ')} }`;
   return (
