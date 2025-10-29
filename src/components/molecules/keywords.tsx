@@ -32,7 +32,7 @@ const Keywords = ({ keywordsData }: { keywordsData?: Keyword[] }) => {
           <Link
             key={letter}
             href={`#keyword-${letter}`}
-            className="px-2 py-1 rounded text-primary-500 hover:bg-primary-80 font-semibold text-sm border border-primary-200"
+            className="px-2 py-1 rounded text-secondary hover:bg-primary-80 font-semibold text-sm border border-primary-200"
           >
             {letter}
           </Link>

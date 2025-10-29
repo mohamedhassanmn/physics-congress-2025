@@ -24,6 +24,8 @@ module.exports = {
           900: "var(--color-primary-900)",
         },
         "custom-gray": "#aaaaaa",
+        secondary: "var(--color-secondary)",
+        navbarBg: "var(--color-navbar-bg)",
       },
     },
   },

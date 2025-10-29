@@ -19,7 +19,7 @@ const Topics = ({ topicData = [] }) => {
       {topicData.map(
         (schedule: { sessions: any; date: string | number | Date }) => (
           <details open className="border rounded-md mb-4">
-            <summary className="p-4 cursor-pointer bg-primary-500 text-white rounded-md">
+            <summary className="p-4 cursor-pointer bg-secondary text-white rounded-md">
               {formattedDate(schedule?.date)}
             </summary>
             <div className="p-4">
@@ -97,7 +97,7 @@ const Topics = ({ topicData = [] }) => {
                                         <span className="italic font-medium">{subSubSession.presenter?.name}</span>
                                       </div>
                                       <details>
-                                        <summary className="cursor-pointer text-primary-500 hover:underline">View Abstract</summary>
+                                        <summary className="cursor-pointer text-secondary hover:underline">View Abstract</summary>
                                         <div>
                                           <div className="font-semibold my-2">Abstract:&nbsp;</div>
                                           <PortableText value={subSubSession.abstract} />

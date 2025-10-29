@@ -17,8 +17,8 @@ const ScheduleTabs = () => {
         <Link
           key={tab.href}
           href={tab.href}
-          className={`hover:no-underline hover:text-primary-500 p-2 text-center font-semibold text-base cursor-pointer mx-2 ${
-            pathname === tab.href ? "active-tab text-primary-500" : "text-primary-300"
+          className={`hover:no-underline hover:text-secondary p-2 text-center font-semibold text-base cursor-pointer mx-2 ${
+            pathname === tab.href ? "active-tab text-secondary" : "text-primary-500"
           }`}
         >
           {tab.label}
