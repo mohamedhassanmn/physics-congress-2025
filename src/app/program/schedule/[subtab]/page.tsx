@@ -26,8 +26,8 @@ const SchedulePage = async ({
           {subtab == "keywords" ? <Keywords keywordsData={data} /> : null}
         </>
       ) : (
-        <div className="h-1/2 flex items-center justify-center bg-gray-100">
-          <div className="w-1/2">
+        <div className="h-3/4 flex items-center justify-center bg-gray-100 py-4">
+          <div className="w-1/3">
             <img
               src="/images/coming-soon.png"
               alt="Maintenance"
