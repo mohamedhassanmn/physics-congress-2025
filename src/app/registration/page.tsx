@@ -53,6 +53,12 @@ const RegistrationPage = async () => {
                         <td>{registrationFees?.registrationFeeStructure?.[0]?.accommodationStudents}</td>
                         <td>{registrationFees?.registrationFeeStructure?.[0]?.accommodationAccompanyingPerson}</td>                    
                     </tr>
+                    <tr>
+                        <td><PortableText value={registrationFees?.premiumTitle} /></td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.premiumParticipants}</td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.premiumStudents}</td>
+                        <td>{registrationFees?.registrationFeeStructure?.[0]?.premiumAccompanyingPerson}</td>                    
+                    </tr>
                 </tbody>
             </table> 
             <br />
