@@ -3,7 +3,7 @@ import { querySanity } from '@/sanity/client';
 const REGISTRATION_QUERY = `{
   "registrationSections": *[_type == "registrationSection"]{ registrationContent },
   "registrationForms": *[_type == "registrationFormType"]{ name, registerationFormDetails, clickableCTA[]->{ buttonText, buttonLink } },
-  "registrationFees": *[_type == "registrationFeeType"]{ registrationFeeStructure[]{ earlyParticipants, earlyStudents, earlyAccompanyingPerson, lateParticipants, lateStudents, lateAccompanyingPerson, accommodationParticipants, accommodationStudents, accommodationAccompanyingPerson }, earlyRegistrationDate, lateRegistrationDate, accommodationTitle, registrationFeesTitle, registrationNote },
+  "registrationFees": *[_type == "registrationFeeType"]{ registrationFeeStructure[]{ earlyParticipants, earlyStudents, earlyAccompanyingPerson, lateParticipants, lateStudents, lateAccompanyingPerson, accommodationParticipants, accommodationStudents, accommodationAccompanyingPerson, premiumParticipants, premiumStudents, premiumAccompanyingPerson }, earlyRegistrationDate, lateRegistrationDate, accommodationTitle, premiumTitle, registrationFeesTitle, registrationNote },
   "cancellationAndRefundPolicies": *[_type == "cancellationAndRefundPolicy"]{ cancellationTitle, cancellationContent },
   "visaInformation": *[_type == "visaInformation"]{ visaTitle, visaInfoContent }
 }`;
