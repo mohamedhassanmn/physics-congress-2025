@@ -9,7 +9,8 @@ const ProgramPage = async () => {
   const scientificPrograms = data?.scientificPrograms?.[0];
   const invitedSpeakers = data?.invitedSpeakers?.[0];
   const plenarySpeakers = data?.plenarySpeakers?.[0];
-  const invitePlenaryAndInvitedSpeakers = data?.invitePlenaryAndInvitedSpeakers?.[0];
+  const invitePlenaryAndInvitedSpeakers =
+    data?.invitePlenaryAndInvitedSpeakers?.[0];
   const socialPrograms = data?.socialPrograms?.[0];
   return (
     <div id="mid-wrapper">
@@ -73,6 +74,7 @@ const ProgramPage = async () => {
         </table>
         <br />
         <div>
+          <h2>{invitePlenaryAndInvitedSpeakers?.title}</h2>
           <PortableText value={invitePlenaryAndInvitedSpeakers?.content} />
         </div>
         <br />
