@@ -46,6 +46,12 @@ const ProgramPage = async () => {
           )
         )}
         <br />
+        <div>
+          <h2>{invitePlenaryAndInvitedSpeakers?.title}</h2>
+          <PortableText value={invitePlenaryAndInvitedSpeakers?.content} />
+        </div>
+        <br />
+        <br />
         <h2>{plenarySpeakers?.title}</h2>
         <table id="ftable">
           <tbody>
@@ -72,11 +78,6 @@ const ProgramPage = async () => {
             ))}
           </tbody>
         </table>
-        <br />
-        <div>
-          <h2>{invitePlenaryAndInvitedSpeakers?.title}</h2>
-          <PortableText value={invitePlenaryAndInvitedSpeakers?.content} />
-        </div>
         <br />
         <br />
         <h2>{socialPrograms?.programTitle}</h2>
