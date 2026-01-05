@@ -5,6 +5,7 @@ const PROGRAM_QUERY = `{
   "scientificPrograms": *[_type == "scientificProgramSection"]{ scientificProgramTitle, scientificProgramContent[]->{ name, scientificProgramContent, clickableCTA[]->{ buttonText, buttonLink } } },
   "plenarySpeakers": *[_type == "plenarySpeakers"]{ title, speakers[]->{ name, organization, topic } },
   "invitedSpeakers": *[_type == "invitedSpeakers"]{ title, speakers[]->{ name, organization, topic } },
+  "invitePlenaryAndInvitedSpeakers": *[_type == "invitePlenaryAndInvitedSpeakersType"]{ content },
   "socialPrograms": *[_type == "socialProgram"]{ programTitle, programContent }
 }`;
 
