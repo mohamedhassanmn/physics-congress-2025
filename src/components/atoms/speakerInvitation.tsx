@@ -45,7 +45,9 @@ export default function SpeakerInvitationToast({
 
   const handleBtnClick = () => {
     window.location.href =
-      data?.speakerInvitationButtonLink || data?.visaSupportButtonLink || "#";
+      type === "speaker"
+        ? data?.speakerInvitationButtonLink
+        : data?.visaSupportButtonLink || "#";
   };
 
   if (!isVisible) return null;
