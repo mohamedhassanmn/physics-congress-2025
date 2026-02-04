@@ -19,7 +19,9 @@ export default async function RootLayout({
   const data = await res.json();
 
   const layoutSection = data?.layoutSections?.[0];
-  const heroImageUrl = layoutSection?.heroImage?.asset?.url;
+  const heroImageUrl =
+    layoutSection?.heroImage?.asset?.url ||
+    "https://cdn.sanity.io/images/7v8y29gj/production/d781a7136d58a0f2f5263fa553c8e7cede5aa1b9-1600x900.webp";
   const primaryColor = layoutSection?.primaryColor || "#e1d1c9";
   const secondaryColor = layoutSection?.secondaryColor || "#c09068";
   const navColor = layoutSection?.navColor || "#417078";
