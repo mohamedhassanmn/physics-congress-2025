@@ -1,4 +1,4 @@
-import { querySanity } from '@/sanity/client';
+import { querySanity } from "@/sanity/client";
 
 const ROOT_QUERY = `{
   "welcomeSections": *[_type == "welcomeSection"]{
@@ -9,7 +9,18 @@ const ROOT_QUERY = `{
       role,
       designationOrganization,
       rank
-    }
+    },
+    speakerInvitationTitle,
+    speakerInvitationContent,
+    speakerInvitationBadgeText,
+    speakerInvitationButtonText,
+    speakerInvitationButtonLink,
+    visaSupportTitle,
+    visaSupportContent,
+    visaSupportBadgeText,
+    visaSupportBadgeNudgeText,
+    visaSupportButtonText,
+    visaSupportButtonLink
   },
   "sponsorSections": *[_type == "sponsorSection"]{
     sponsorTitle,
@@ -58,16 +69,16 @@ export async function GET() {
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     });
   } catch (error) {
     console.error("Error fetching data:", error);
     return new Response(JSON.stringify({ error: "Failed to fetch data" }), {
       status: 500,
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     });
   }
 }
