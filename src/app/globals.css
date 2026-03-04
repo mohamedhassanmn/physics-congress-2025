@@ -573,6 +573,27 @@ h4::after,
   pointer-events: none;
 }
 
+.status-badge a {
+  display: inline-block;
+  text-align: center;
+  margin-top: 4px;
+  margin-left: auto;
+  font-size: 12px;
+  background-color: #927431;
+  color: #ffffff !important;
+  padding: 4px 8px;
+  border-radius: 8px;
+  text-decoration: underline;
+  font-weight: 500;
+  animation: statusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes statusPulse {
+  50% {
+    opacity: 0.6;
+  }
+}
+
 .alarm-info {
   display: flex;
   gap: 8px;

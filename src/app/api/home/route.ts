@@ -48,7 +48,8 @@ const ROOT_QUERY = `{
   "importantDateSections": *[_type == "importantDateSection"]{
     importantDateTitle,
     importantDateList[]->|order(rank asc){
-      dateContent
+      dateContent,
+      isOpen
     }
   },
   "contactSections": *[_type == "contactSection"]{

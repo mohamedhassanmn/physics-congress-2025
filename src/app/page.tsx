@@ -1,3 +1,4 @@
+import Listhighlights from "@/components/atoms/listHighlights";
 import SpeakerInvitationToast from "@/components/atoms/speakerInvitation";
 import { baseUrl } from "@/helper";
 import { PortableText } from "@portabletext/react";
@@ -60,9 +61,9 @@ const Home = async () => {
             <ul>
               {importantDateSection?.importantDateList?.map(
                 (item: any, index: number) => (
-                  <li key={index}>
+                  <Listhighlights key={index} isOpen={item.isOpen}>
                     <PortableText value={item.dateContent} />
-                  </li>
+                  </Listhighlights>
                 ),
               )}
             </ul>
