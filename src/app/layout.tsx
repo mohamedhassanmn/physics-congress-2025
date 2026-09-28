@@ -2,7 +2,6 @@ export const dynamic = "force-dynamic";
 
 import { Inter } from "next/font/google";
 import { PortableText } from "next-sanity";
-// @ts-expect-error Next.js handles this global stylesheet import at build time.
 import "./globals.css";
 import { baseUrl } from "@/helper";
 import NavBar from "@/components/atoms/navBar";
