@@ -36,7 +36,8 @@ const ROOT_QUERY = `{
         alt
       },
       rank
-    }
+    },
+    sponsorsBasedOnTier[]{ _key, name, tier, website, logo{ alt, asset->{ _id, url } } },
   },
   "conferenceSections": *[_type == "conferenceSection"]{
     conferenceTitle,

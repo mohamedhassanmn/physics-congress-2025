@@ -2,6 +2,7 @@ import Listhighlights from "@/components/atoms/listHighlights";
 import SpeakerInvitationToast from "@/components/atoms/speakerInvitation";
 import { baseUrl } from "@/helper";
 import { PortableText } from "@portabletext/react";
+import SponsorsSection from "./components/sections/sponsorsSection";
 
 const Home = async () => {
   const res = await fetch(baseUrl + `/api/home`);
@@ -113,6 +114,7 @@ const Home = async () => {
             </tbody>
           </table>
           <br />
+          <SponsorsSection sponsors={sponsorSection?.sponsorsBasedOnTier} />
           <br />
           <br />
           <h1>{conferenceSection?.conferenceTitle}</h1>

@@ -1,0 +1,238 @@
+/* Theme hooks — adjust names to match generateColorShades() output. */
+.section {
+  --accent: var(--color-secondary-500, #c09068);
+  --deep: var(--color-nav-500, #417078);
+  --ink: #2b1f1c;
+  --muted: #6e5a52;
+  --hairline: color-mix(in srgb, var(--accent) 35%, transparent);
+
+  color: var(--ink);
+  padding: 2.5rem 13px 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Matches the "Visa information" heading + fading rule */
+.heading {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0 0 0.25rem 1rem;
+}
+.heading::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin: 0.75rem 0 0 -1rem;
+  width: 65%;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.tier {
+  padding: 2rem 0 0.5rem;
+}
+.tier + .tier {
+  border-top: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.tierLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.platinum .swatch {
+  background: linear-gradient(135deg, #f4f4f2, #a3a6ab);
+}
+.gold .swatch {
+  background: linear-gradient(135deg, #f6dc8a, #b8892c);
+}
+.silver .swatch {
+  background: linear-gradient(135deg, #eceeef, #8f959b);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 2rem;
+}
+
+/* ---- Diamond: the one bold moment ---- */
+.diamond {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 1.5rem 0 0.5rem;
+  padding: 2.25rem 2rem 2.25rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--deep) 62%, #0c2428) 0%,
+    var(--deep) 58%,
+    color-mix(in srgb, var(--deep) 82%, #9cc7cb) 100%
+  );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+/* Faint field lines radiating from the lower-right corner */
+.diamond::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: repeating-radial-gradient(
+    circle at 100% 110%,
+    transparent 0 26px,
+    rgba(255, 255, 255, 0.07) 26px 27px
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at 100% 100%,
+    #000 0%,
+    transparent 65%
+  );
+  mask-image: radial-gradient(circle at 100% 100%, #000 0%, transparent 65%);
+}
+.diamond .tierLabel {
+  color: #f3ece8;
+}
+.diamond .swatch {
+  border-radius: 1px;
+  transform: rotate(45deg);
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.diamond .name {
+  color: rgba(243, 236, 232, 0.9);
+}
+.diamond .plate {
+  border-color: transparent;
+  box-shadow: 0 14px 32px -14px rgba(5, 25, 28, 0.6);
+}
+.diamond + .tier {
+  border-top: 0;
+}
+
+/* ---- Sponsor tile ---- */
+.sponsor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+  max-width: 100%;
+}
+
+.plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  max-width: 100%;
+  padding: 16px 28px;
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.plate img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* hides off-white logo backgrounds on the white plate */
+}
+
+/* Guard against global h3 / footer typography leaking in */
+.section .tierLabel {
+  line-height: 1.4;
+  border: 0;
+  padding: 0;
+  text-transform: none;
+}
+.section .tierLabel::after,
+.section .tierLabel::before {
+  content: none;
+}
+.section .name {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.name {
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.fallbackName {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+a.sponsor:hover .plate {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+a.sponsor:focus-visible {
+  outline: none;
+}
+a.sponsor:focus-visible .plate {
+  outline: 2px solid var(--deep);
+  outline-offset: 3px;
+}
+.diamond a.sponsor:focus-visible .plate {
+  outline-color: #fff;
+}
+
+/* ---- Programme partners ---- */
+.partners .row {
+  gap: 1.75rem 1.5rem;
+}
+.role {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 2rem 0.75rem 1.25rem;
+  }
+  .diamond {
+    padding-inline: 1rem;
+  }
+  .heading {
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
+  }
+  .plate {
+    padding: 12px 18px;
+    min-width: 0;
+  }
+  .row {
+    gap: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plate {
+    transition: none;
+  }
+  a.sponsor:hover .plate {
+    transform: none;
+  }
+}
