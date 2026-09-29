@@ -14,6 +14,7 @@ const VenueTravelPage = async () => {
   const accommodationTitle =
     venueSection?.accommodationTitle || "Accommodation";
   const accommodationContent = venueSection?.accommodationContent || [];
+  const accommodationImages = venueSection?.accommodationImages || [];
   const travelTitle = venueSection?.travelTitle || "Travel";
   const travelContent = venueSection?.travelContent || [];
   const travelImage = venueSection?.travelImage?.asset || "";
@@ -24,7 +25,7 @@ const VenueTravelPage = async () => {
   const tourInfoContent = venueSection?.tourInfoContent || [];
   const tourPlaceImages = venueSection?.tourPlaceImages || [];
   const isSessionInfoEmpty = Boolean(
-    Array.isArray(sessionInfo) && sessionInfo.length === 0
+    Array.isArray(sessionInfo) && sessionInfo.length === 0,
   );
   return (
     <div id="mid-wrapper">
@@ -92,6 +93,27 @@ const VenueTravelPage = async () => {
           value={accommodationContent}
           components={portableTextComponents}
         />
+        {accommodationImages.length > 0 && (
+          <div
+            className={`grid grid-cols-1 gap-4 mt-6 pr-5 ${accommodationImages.length > 1 ? "sm:grid-cols-2" : "max-w-xl"
+              }`}
+          >
+            {accommodationImages.map((image: any, index: number) => (
+              <figure key={image.asset?._id || index} className="m-0">
+                <img
+                  src={image.asset?.url}
+                  alt={image.caption || image.asset?.originalFilename}
+                  className="w-full h-[240px] object-cover rounded"
+                />
+                {image.caption && (
+                  <figcaption className="mt-2 text-sm text-center opacity-80">
+                    {image.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+        )}
         <br />
         <br />
         <h1>{travelTitle}</h1>
@@ -109,7 +131,7 @@ const VenueTravelPage = async () => {
         <br />
         {travelBy.map((transportation: any, index: number) =>
           transportation.transportationTitle &&
-          transportation.transportationContent ? (
+            transportation.transportationContent ? (
             <div key={index}>
               <h2>{transportation.transportationTitle}</h2>
               <PortableText
@@ -125,7 +147,7 @@ const VenueTravelPage = async () => {
                 </div>
               ) : null}
             </div>
-          ) : null
+          ) : null,
         )}
 
         <Link href="#visa_information">

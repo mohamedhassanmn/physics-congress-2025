@@ -8,6 +8,7 @@ const VENUETRAVEL_QUERY = `*[_type == "conferenceVenueSection"]{
   sessionInfo[]{ session, campus, address, buildingAndRoom, buildingImage{ asset->{ _id, url, originalFilename } } },
   accommodationTitle,
   accommodationContent,
+  accommodationImages[]{ caption, asset->{ _id, url, originalFilename } },
   travelTitle,
   travelContent,
   travelImage{ asset->{ _id, url, originalFilename } },
