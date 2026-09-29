@@ -1,4 +1,4 @@
-import styles from "../../sponsorSection.module.css";
+import styles from "@/app/sponsorSection.module.css";
 
 export type SponsorTier =
   | "diamond"
