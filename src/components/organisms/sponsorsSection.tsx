@@ -11,7 +11,8 @@ export type SponsorTier =
   | "studentTravelGrant"
   | "bestPaperAwards"
   | "lanyard"
-  | "digitalPartner";
+  | "digitalPartner"
+  | "technologyPartner";
 
 export interface Sponsor {
   _key?: string;
@@ -38,6 +39,7 @@ const PARTNER_ROLES: { tier: SponsorTier; label: string }[] = [
   { tier: "bestPaperAwards", label: "Best paper & poster awards" },
   { tier: "lanyard", label: "Lanyards" },
   { tier: "digitalPartner", label: "Digital partner" },
+  { tier: "technologyPartner", label: "Technology partner" },
 ];
 
 // Ask the Sanity CDN for a right-sized image (2x for retina).

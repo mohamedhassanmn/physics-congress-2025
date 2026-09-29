@@ -2,7 +2,7 @@ import Listhighlights from "@/components/atoms/listHighlights";
 import SpeakerInvitationToast from "@/components/atoms/speakerInvitation";
 import { baseUrl } from "@/helper";
 import { PortableText } from "@portabletext/react";
-import SponsorsSection from "./components/sections/sponsorsSection";
+import SponsorsSection from "@/components/organisms/sponsorsSection";
 
 const Home = async () => {
   const res = await fetch(baseUrl + `/api/home`);
